@@ -1,0 +1,543 @@
+@font-face {
+  font-family: 'IRANSans';
+    src: url('../IRANSans-web.eot');
+    src: url('../fonts/IRANSans-web.eot?#iefix') format('eot'),  /* IE6–8 */
+        url('../fonts/IRANSans-web.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
+        url('../fonts/IRANSans-web.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/IRANSans-web.ttf') format('ttf');  
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, h1, h2,  h3,  h4,  h5,  h6, input, table{font-family: IRANSans, sans-serif, tahoma;}
+body{font-size: 1em;}
+p, a, span, li{font-size: 0.9em;}
+/*header*/
+.header img{
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.login{
+    background-image: url('../image/slide3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.aboutus{
+    background-image: url('../image/bg.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*menu*/
+.menu{
+    background: url(../image/mnbg.png);
+}
+.menu .row{
+    display: table;
+    table-layout: fixed;
+}
+.menu .col-md-8{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    float: none;
+}
+.menu img{
+    padding: 15px;
+}
+.menu ul{
+    list-style-type: none;
+}
+.menu ul li{
+    display: inline-block;
+    background-color: green;
+    padding: 1em;
+}
+.menu ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+textarea.form-control {
+	height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #f8f8f8;
+    border: 3px solid #ddd;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #888;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+textarea, 
+textarea.form-control {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 30px;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+textarea:focus, 
+textarea.form-control:focus {
+	outline: 0;
+	background: #fff;
+    border: 3px solid #ccc;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder, 
+textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
+
+input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, 
+textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
+
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, 
+textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
+
+
+
+button.btn {
+	height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #4aaf51;
+    border: 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    margin: 0 auto;
+    display: block;
+}
+
+button.btn:hover { opacity: 0.6; color: #fff; }
+
+button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+button.btn:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
+
+button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
+
+.btn-link-1 {
+	display: inline-block;
+	height: 50px;
+	margin: 5px;
+	padding: 16px 20px 0 20px;
+	background: #4aaf51;
+	font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
+
+.btn-link-1.btn-link-1-facebook { background: #4862a3; }
+.btn-link-1.btn-link-1-twitter { background: #55acee; }
+.btn-link-1.btn-link-1-google-plus { background: #dd4b39; }
+
+.btn-link-1 i {
+	padding-right: 5px;
+	vertical-align: middle;
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.btn-link-2 {
+	display: inline-block;
+	height: 50px;
+	margin: 5px;
+	padding: 15px 20px 0 20px;
+	background: rgba(0, 0, 0, 0.3);
+	border: 1px solid #fff;
+	font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
+.btn-link-2:hover, .btn-link-2:focus, 
+.btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
+
+
+/***** Top content *****/
+
+
+
+.top-content .text {
+	color: #fff;
+}
+
+.top-content .text h1 { color: #fff; }
+
+.top-content .description {
+	margin: 20px 0 10px 0;
+}
+
+.top-content .description p { opacity: 0.8; }
+
+.top-content .description a {
+	color: #fff;
+}
+.top-content .description a:hover, 
+.top-content .description a:focus { border-bottom: 1px dotted #fff; }
+
+.form-box {
+	margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 25px 15px 25px;
+	background: #fff;
+	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+	text-align: right;
+}
+.form-top h3{
+    color: #777;
+    
+}
+.form-top h3:before{
+    content: "\f084";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #ddd;
+    display: inline-block;
+    padding: 0;
+    font-size: 2em;
+    width: 1.5em;
+}
+.form-bottom {
+	padding: 25px 25px 30px 25px;
+	background: #eee;
+	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
+.form-bottom form textarea {
+	height: 100px;
+}
+
+.form-bottom form button.btn {
+	width: 100%;
+}
+
+.form-bottom form .input-error {
+	border-color: #4aaf51;
+}
+
+.social-login {
+	margin-top: 35px;
+}
+
+.social-login h3 {
+	color: #fff;
+}
+
+.social-login-buttons {
+	margin-top: 25px;
+}
+.news{
+    background-image: url('../image/brickwall.png');
+}
+.titlenews{
+    background-image: url('../image/ep.png');
+        text-align: center;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    padding-bottom: 1em;
+
+}
+.newsbox{
+    border-radius: 0 5em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 3em 0.5em;
+    border: 1px dashed #777;
+    background: rgb(12,101,55);
+    background: -webkit-linear-gradient(left top, #3c7643, rgba(37, 128, 0, 0.44));
+    background: -o-linear-gradient(bottom right, #3c7643, rgba(37, 128, 0, 0.44));
+    background: -moz-linear-gradient(bottom right, #3c7643, rgba(37, 128, 0, 0.44));
+    background: linear-gradient(to bottom right, #3c7643, rgba(37, 128, 0, 0.44));
+}
+.newsbox:hover{
+    border-radius: 5em 5em;
+}
+.aboutus .text{
+    font-size: 1.3em;
+    line-height: 2em;
+    color: white;
+    padding: 3em 0; 
+}
+.newsbox .text{
+    font-size: 1.3em;
+    line-height: 2em;
+    display: none; 
+}
+.newsbox h4{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.footer{
+    background-image: url('../image/ftbg.png');
+    padding: 2em;
+    text-align: center;
+    color: #f2dede;
+}
+
+/*Edit usecase*/
+.edit{
+    padding: 2em 0;
+    background-image: url('../image/wood.png');
+}
+.edit .container{
+    background-color: white;
+    padding: 4em;
+    width: 80%;
+}
+/*take courses*/
+.takecourse input[type="text"]{
+    width: 33px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #ddd;
+    margin: 2px 3px;
+    
+}
+.takecourse th{
+    font-size: 0.7em;
+    text-align: center;
+    background-color: rgb(237,233,216);
+    color: rgb(66,65,57);
+}
+
+.takecourse tr{
+    background-color: rgb(228,240,238);
+}
+.takecourse td{
+    border: 1px solid rgb(187,199,197);
+}
+ .takecourse th{
+    border: 1px solid rgb(49,51,47);     
+}
+.takecourse table {
+    border: 1px solid black;
+}
+.takecourse .digit{
+    text-align: center;
+}
+
+.takecourse select{
+    border: 1px solid #ddd;
+    font-size: 0.7em;
+    font-weight: bold;
+    height: 28px;
+}
+.takecourse #add_row, .takecourse #delete_row{
+    font-size: 1.1em;
+    font-weight: bold;
+    border-color: gray;
+    background-color: lightgray;
+    margin: 0 0.5em;
+}
+.takecourse #delete_row{
+    background-color: #f2dede;
+}
+ .takecourse #delete_row:hover{
+    background-color:rgba(242, 222, 222, 0.8);
+}
+.takecourse #add_row:hover{
+    background-color: #ddd; 
+}
+.takecourse .btn-primary{
+    font-size: 1.2em;
+    margin: 1em 0;
+    line-height: 2.5em;
+    height: 30px;
+}
+.takecourse img{
+    display: block;
+    margin: 0 auto;
+}
+.takecourse .container-fluid{
+    margin-right: 3%;
+}
+
+/**/
+.grade table, .grade th, .grade td, .studentlist table, .studentlist th, .studentlist td, .mark table, .mark td, .mark th{
+    border: 1px solid black;
+    padding: 0.5em;
+}
+.grade th, .studentlist th, .mark th{
+    background-color: rgb(236,233,216);
+    font-size: 0.7em;
+    text-align: center;
+    line-height: 1em;
+}
+.grade td, .studentlist td, .mark td{
+    line-height: 1em;
+    font-size: 0.8em;
+    text-align: center;
+}
+.grade table:first-child tr td:first-child, .studentlist tr td:first-child, .mark tr td:first-child{
+    color: red;
+    text-decoration: underline;
+}
+.grade table, .studentlist table{
+    margin-bottom: 5em;
+    margin-top: 2em;
+}
+.grade .information{
+    margin-top: 2em;
+}
+
+/**/
+.studentlist form{
+    margin: 5em 0;
+}
+.studentlist input[type="text"], .studentlist select{
+    height: 34px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.studentlist form>div{
+    margin-bottom: 1em;
+}
+.studentlist table{
+    margin: 0 auto;
+    margin-bottom: 3em;
+    background-color: rgb(228,240,238);
+    direction: rtl;
+}
+.studentlist .sttb{
+    overflow-y: scroll;
+    height: 400px;
+    direction: ltr;
+    margin-bottom: 6em;
+}
+
+.mark .container .row:first-child{
+    background-color: rgb(228,240,238);
+    border-radius: 11px;
+    border: 1px solid green;
+    margin: 3em 0;
+    padding: 1em 0;
+}
+
+.mark input[type="text"]{
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #ddd;
+    margin: 2px 3px;
+    
+}
+
+.mark form{
+    overflow-y: scroll;
+    height: 400px;
+    direction: ltr;
+    margin-bottom: 6em;
+}
+.mark table{
+    margin: 0 auto;
+    direction: rtl;
+    margin-bottom: 3em;
+}
+.mark ul{
+    list-style-type: none;
+}
+.mark li{
+    font-size: 1.2em;
+    line-height: 2em;
+
+}
+
+.course{
+    background-image: url('../image/whitey.png');
+    padding: 6em 0;
+}
+.course .fa{
+    padding: 1em;
+    background-color: #4aaf51;
+    margin: 0 1em;
+    border-radius: 50%;
+}
+.course .fa-minus{
+    background-color: firebrick;
+}
+.course .fa:hover{
+    color: white;
+}
+.course #time select{
+    margin: 0 1em 0.3em 1em;
+}
+.course .title, .showcourse .title {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    padding-bottom: 1em;
+}
+
+.showcourse{
+    background-image: url('../image/maze.png');
+}
+.showcourse input{
+    background-color: rgb(228,240,238);
+}
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (max-width: 767px) {
+	
+	.inner-bg { padding: 60px 0 110px 0; }
+
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 32px; }
+
+}
+
