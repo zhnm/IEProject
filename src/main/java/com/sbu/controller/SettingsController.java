@@ -3,10 +3,13 @@ package com.sbu.controller;
 
 import com.sbu.controller.model.Login;
 import com.sbu.dao.model.User;
+import com.sbu.entity.Student;
+import com.sbu.service.impl.StudentManager;
 import java.util.Date;
 import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping(value = "/login")
 public class SettingsController {
-
+    @Autowired
+    public StudentManager studentManager;
     
     @RequestMapping(value = "/editinfo", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
@@ -51,8 +55,11 @@ public class SettingsController {
 
         @RequestMapping(value = "/loginstd", method = {RequestMethod.POST, RequestMethod.GET})
     public String loginstd(HttpSession session, HttpServletRequest request, Model model) {
-         model.addAttribute("name",(String)session.getAttribute("username"));
-         model.addAttribute("family",(String)session.getAttribute("password"));
+        
+        Student std=studentManager.findByID(Integer.parseInt((String)session.getAttribute("username")));
+        
+        model.addAttribute("name",std.getName());
+        model.addAttribute("family",std.getFamily());
         return "loginstd";
     }
 }
