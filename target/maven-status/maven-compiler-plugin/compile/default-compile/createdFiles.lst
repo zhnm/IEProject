@@ -1,8 +1,8 @@
-com\sbu\service\impl\UserManagerImpl.class
 com\sbu\controller\model\Student.class
 com\sbu\service\UserManager.class
+com\sbu\dao\UserDAO.class
+com\sbu\controller\StudentController.class
+com\sbu\service\impl\UserManagerImpl.class
 com\sbu\controller\UserInsertController.class
 com\sbu\dao\impl\UserDAOImpl.class
-com\sbu\dao\UserDAO.class
 com\sbu\dao\model\User.class
-com\sbu\controller\StudentController.class
