@@ -38,7 +38,7 @@ public class WelcomeController {
         if(studentManager.isValid(Integer.parseInt(user),Integer.parseInt(pass))){
            return "redirect:/login/loginstd"; 
         }
-       return "redirect:/login/loginstd";
+       return "welcome";
     }
     
 }
