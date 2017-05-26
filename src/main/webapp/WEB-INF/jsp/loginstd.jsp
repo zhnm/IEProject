@@ -9,6 +9,9 @@
         contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" 
         import="java.sql.*" %>
+<%
+    String name=(String)session.getAttribute("username");
+%>
 <html>
     <head>
         <link rel="icon" type="image/png" href="<c:url value = "/resources/image/favicon.ico"/>">
@@ -55,7 +58,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="welcomemsg">
-                        <p><span>${message}</span> عزیز! خوش آمدی</p>
+                        <p><span>${sessionScope.username}</span> عزیز! خوش آمدی</p>
                     </div>
                 </div>
             </div>
