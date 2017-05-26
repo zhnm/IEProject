@@ -121,8 +121,8 @@ public class Course implements Serializable {
         this.profCourseSemCollection = profCourseSemCollection;
     }
 
-    public Major getMajorid() {
-        return majorid;
+    public Integer getMajorid() {
+        return majorid.getId();
     }
 
     public void setMajorid(Major majorid) {

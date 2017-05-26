@@ -46,7 +46,7 @@
     <div class="studentlist course">        
         <div class="container">
         <h2 class="title">تعریف درس</h2>
-            <form class="form-inline" method="post" action="#">
+            <form class="form-inline" method="post" action="<c:url value = "/login/savecourse" context="/MVCSesssion3"/>">
 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>
@@ -55,26 +55,26 @@
                 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">تعداد واحد:</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="name" id="name"  placeholder=""/></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="unit" id="name"  placeholder=""/></div>
                 </div>
 				
                 <div class="row">
                         <div class="col-md-2"><label for="phone" class="control-label">نوع درس :</label></div>
                          <div class="col-md-10">
-                             <select class="bootstrap-select">
-                                <option value="1" selected="selected">تئوری</option>
-                                <option value="2"> عملی</option>
-                                <option value="2"> تئوری/عملی</option>
+                             <select class="bootstrap-select" name="type">
+                                <option value="theoritical" selected="selected">تئوری</option>
+                                <option value="practical"> عملی</option>
+                                <option value="theoritical/practical"> تئوری/عملی</option>
                             </select>
                            </div>
                 </div>
 
                 <div class="row">
                         <div class="col-md-2"><label for="name" class="control-label">گروه درس :</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="username" id="username"  placeholder=""/></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="major" id="username"  placeholder=""/></div>
                 </div>
                 
-                
+             <h1>${massage}</h1>   
              <button type="submit" class="btn btn-primary">ثبت درس</button>
         </form>    
         </div>

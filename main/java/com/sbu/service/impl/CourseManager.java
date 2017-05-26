@@ -20,7 +20,7 @@ public class CourseManager /*implements UserManager*/ {
 
     //@Override
     @Transactional
-    public void insertUser(Course user) {
+    public void insertCourse(Course user) {
         courseDao.insertUser(user);
     }
 
