@@ -32,9 +32,7 @@ public class StudentManager /*implements UserManager*/ {
     @Transactional
     public boolean isValid(Integer id,Integer pass){
         Student std=findByID(id);
-        if(std==null || Integer.parseInt(std.getSpassword())!=pass)
-            return false;
-        return true;
+        return std != null && Integer.parseInt(std.getSpassword()) == pass;
     }
     
     @Transactional
