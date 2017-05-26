@@ -51,10 +51,6 @@
                     <li><a>معرفی سامانه</a></li>
                    
                 </ul>
-                    <form class="" method="post" action="<c:url value = "/welcome/logout" context="/MVCSesssion3"/>" >
-                        
-                        <button class="btn btn-primary">خروج</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -64,7 +60,7 @@
     <h2 class="titlenews">ویرایش اطلاعات</h2>
     <h1 id="random">YOUR NAME IS : ${sessionScope.username}</h1>
     <h1>${massage}</h1>
-    <form class="" method="post" action="<c:url value = "/welcome/save" context="/MVCSesssion3"/>" >
+    <form class="" method="post" action="<c:url value = "/login/save" context="/MVCSesssion3"/>" >
     <!--name-->
         <div class="form-group row">
             <label for="name" class="control-label">نام :</label>

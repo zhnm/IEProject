@@ -49,7 +49,7 @@
                     <li><a href="">مشاهده دروس ارائه شده</a></li>
                     <li><a href="">وضعیت درسی ترم جاری</a></li>
                     <li><a href="">مشاهده اطلاعات شخصی</a></li>
-                    <li><a href="">ویرایش اطلاعات شخصی</a></li>
+                    <li><a href="/MVCSesssion3/login/editinfo">ویرایش اطلاعات شخصی</a></li>
                     <li><a href="/MVCSesssion3/login/logout">خروج</a></li>
                     </ul>
                 </div>
