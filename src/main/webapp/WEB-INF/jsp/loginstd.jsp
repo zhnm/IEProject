@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="http://http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
+                        <img src="http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
                     </div>
 
                     <div class="col-md-8">
