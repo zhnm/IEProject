@@ -27,7 +27,9 @@ public class WelcomeController {
     public String login(HttpServletRequest request, Model model) {
        HttpSession session = request.getSession();
        session.setAttribute("username",request.getParameter("form-username"));
-       model.addAttribute("massage", "Changes Succesfully Saved!");
+       String userc=request.getParameter("form-username");
+       String pass=request.getParameter("form-password");
+        //model.addAttribute("massage", "Changes Succesfully Saved!");
        return "redirect:/login/loginstd";
     }
     

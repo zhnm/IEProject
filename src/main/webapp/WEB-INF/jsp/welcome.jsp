@@ -77,7 +77,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <h2 class="titlenews">اطلاعیه های آموزشی</h2>
