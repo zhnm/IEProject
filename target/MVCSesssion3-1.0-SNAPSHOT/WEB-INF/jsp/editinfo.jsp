@@ -81,7 +81,7 @@
             <div class="">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="name" id="name"  placeholder=""/>
+                    <input type="text" class="form-control" name="surname" id="name"  placeholder=""/>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
             <label for="phone" class="control-label">تلفن همراه :</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="name" id="name"  placeholder=""/>
+                    <input type="text" class="form-control" name="telephone" id="name"  placeholder=""/>
                 </div>
         </div>
      <!--email-->  
@@ -98,16 +98,8 @@
             <label for="email" class="control-label">پست الکترونیک :</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="email" id="email"  placeholder=""/>
+                    <input type="text" class="form-control" name="emailAdd" id="email"  placeholder=""/>
                 </div>
-        </div>
-    <!--username-->    
-        <div class="form-group row">
-            <label for="name" class="control-label">نام کاربری :</label>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="username" id="username"  placeholder=""/>
-            </div>
         </div>  
     <!--password-->    
     <div class="form-group row">

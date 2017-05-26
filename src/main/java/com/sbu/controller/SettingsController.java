@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 @RequestMapping(value = "/login")
 public class SettingsController {
 
+    
     @RequestMapping(value = "/editinfo", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
         session = request.getSession(false);       
