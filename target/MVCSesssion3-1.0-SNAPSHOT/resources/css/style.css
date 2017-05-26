@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'IRANSans';
-    src: url('<c:url value = "/resources/css/bootstrap.min.css"/>../fonts/IRANSans-web.eot');
+    src: url('../fonts/IRANSans-web.eot');
     src: url('../fonts/IRANSans-web.eot?#iefix') format('eot'),  /* IE6–8 */
         url('../fonts/IRANSans-web.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
         url('../fonts/IRANSans-web.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
