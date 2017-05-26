@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = "/welcome")
+@RequestMapping(value = "/login")
 public class SettingsController {
 
     @RequestMapping(value = "/editinfo", method = {RequestMethod.GET})
@@ -47,4 +47,9 @@ public class SettingsController {
         return "welcome";
     }
 
+        @RequestMapping(value = "/loginstd", method = {RequestMethod.POST, RequestMethod.GET})
+    public String loginstd(HttpSession session, HttpServletRequest request, Model model) {
+         model.addAttribute("massage",session.getAttribute("username"));
+        return "loginstd";
+    }
 }
