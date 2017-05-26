@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'IRANSans';
-    src: url('../IRANSans-web.eot');
+    src: url('../fonts/IRANSans-web.eot');
     src: url('../fonts/IRANSans-web.eot?#iefix') format('eot'),  /* IE6–8 */
         url('../fonts/IRANSans-web.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
         url('../fonts/IRANSans-web.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
@@ -10,8 +10,11 @@
 }
 
 html, body, h1, h2,  h3,  h4,  h5,  h6, input, table{font-family: IRANSans, sans-serif, tahoma;}
-body{font-size: 1em;}
-p, a, span, li{font-size: 0.9em;}
+body{font-size: 12px;}
+p, a, span, li{font-size: 11px;}
+a:hover, a:active{
+    text-decoration: none;
+}
 /*header*/
 .header img{
     width: 100%;
@@ -522,6 +525,30 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 }
 .showcourse input{
     background-color: rgb(228,240,238);
+}
+
+.rightmenu ul{
+    list-style-type: none;
+    background-color: #27ae60;
+    margin: 0;
+    padding: 1em;
+}
+.rightmenu li{
+    line-height: 4em;
+}
+.rightmenu a{
+    color: white;
+    font-size: 1.2em;
+}
+.rightmenu li:hover{
+    background-color: gray;
+}
+.welcomemsg{
+    padding: 1em;
+    color: #0ac6b5;
+}
+.welcomemsg p{
+    font-size: 1.5em;
 }
 /***** Media queries *****/
 
