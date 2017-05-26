@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <!--    <persistence-unit name="localEntity">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.sbu.dao.model.User</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="hibernate.show_sql" value="true"/>    
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="localContainerEntity">
+        <description>Spring JPA Demo with LocalContainerEntityManagerFactoryBean</description>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+        </properties>
+    </persistence-unit>
+    
+    -->
+  <persistence-unit name="sbueng">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.sbu.dao.model.User</class>
+    <class>com.sbu.entity.Faculty</class>
+    <class>com.sbu.entity.Concentration</class>
+    <class>com.sbu.entity.StudentCourse</class>
+    <class>com.sbu.entity.ProfCourseSem</class>
+    <class>com.sbu.entity.Course</class>
+    <class>com.sbu.entity.Major</class>
+    <class>com.sbu.entity.Semester</class>
+    <class>com.sbu.entity.Professor</class>
+    <class>com.sbu.entity.Student</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/university"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="show_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
