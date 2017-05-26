@@ -51,7 +51,8 @@ public class SettingsController {
 
         @RequestMapping(value = "/loginstd", method = {RequestMethod.POST, RequestMethod.GET})
     public String loginstd(HttpSession session, HttpServletRequest request, Model model) {
-         model.addAttribute("massage",session.getAttribute("username"));
+         model.addAttribute("name",(String)session.getAttribute("username"));
+         model.addAttribute("family",(String)session.getAttribute("password"));
         return "loginstd";
     }
 }

@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="welcomemsg">
-                        <p><span>${sessionScope.username}</span> عزیز! خوش آمدی</p>
+                        <p><span>${name} ${family}</span> عزیز! خوش آمدی</p>
                     </div>
                 </div>
             </div>
