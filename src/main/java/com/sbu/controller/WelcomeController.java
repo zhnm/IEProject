@@ -23,11 +23,13 @@ public class WelcomeController {
         return "welcome";
     }
     
-    @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, Model model) {
        HttpSession session = request.getSession();
        session.setAttribute("username",request.getParameter("form-username"));
-       return "redirect:editinfo";
+       model.addAttribute("massage", "Changes Succesfully Saved!");
+       return "redirect:/login/loginstd";
     }
-
+    
 }
+    
