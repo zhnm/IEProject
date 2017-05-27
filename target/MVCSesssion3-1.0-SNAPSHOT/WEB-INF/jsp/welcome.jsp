@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="col-md-8">
-
+                          
                         <ul>
                             <li><a>سیستم مدیریت آموزش</a></li>
                             <li><a>ورود به سامانه</a></li>
@@ -60,7 +60,7 @@
                                 <h3>ورود به سامانه مدیریت آموزشی</h3>
                             </div>
                             <div class="form-bottom">
-                                <p>${name}</p>
+                                
                                 <form role="form" action="<c:url value = "/welcome/login"/>" method="post">
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Username</label>

@@ -1,8 +1,9 @@
 //FINAL 
 package com.sbu.controller;
 
-
+import com.sbu.entity.Professor;
 import com.sbu.entity.Student;
+import com.sbu.service.impl.ProfessorManager;
 import com.sbu.service.impl.StudentManager;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
@@ -12,29 +13,34 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 @Controller
 @RequestMapping(value = "/login")
 public class SettingsController {
+
     @Autowired
+    @Qualifier("studentManager")
     public StudentManager studentManager;
-    
+
+    @Autowired
+    @Qualifier("professorManager")
+    public ProfessorManager professorManager;
+
     @RequestMapping(value = "/editinfo", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
-        session = request.getSession(false);       
+        session = request.getSession(false);
         if (session.getAttribute("username") == null) {
             return "welcome";
         }
         return "editinfo";
     }
 
-    
-        @RequestMapping(value = "/save", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/save", method = {RequestMethod.POST, RequestMethod.GET})
     public String saveSettings(HttpSession session, HttpServletRequest request, Model model) {
         try {
             request.setCharacterEncoding("UTF-8");
@@ -80,7 +86,7 @@ public class SettingsController {
         }
 
         if (request.getParameter("name").length() > 0) {
-                s.setName(request.getParameter("name"));       
+            s.setName(request.getParameter("name"));
         }
         if (request.getParameter("surname").length() > 0) {
             s.setFamily(request.getParameter("surname"));
@@ -90,7 +96,8 @@ public class SettingsController {
         model.addAttribute("massage", "تغییرات با موفقیت انجام شد");
         return "editinfo";
     }
-        private boolean validatePhoneNumber(String phoneNo) {
+
+    private boolean validatePhoneNumber(String phoneNo) {
         //validate phone numbers of format "1234567890"
         if (phoneNo.matches("\\d{10}")) {
             return true;
@@ -124,15 +131,39 @@ public class SettingsController {
         if (session != null) {
             session.invalidate();
         }
-        return "welcome";
+        return "redirect:/";
     }
 
-        @RequestMapping(value = "/loginstd", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/loginstd", method = {RequestMethod.POST, RequestMethod.GET})
     public String loginstd(HttpSession session, HttpServletRequest request, Model model) {
-        
-        Student std=studentManager.findByID(Integer.parseInt((String)session.getAttribute("username")));
-        model.addAttribute("name",std.getName());
-        model.addAttribute("family",std.getFamily());
+        if (Integer.parseInt((String)session.getAttribute("role"))!=0) {
+            return "redirect:/login/logout";
+        }
+        Student std = studentManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        model.addAttribute("name", std.getName());
+        model.addAttribute("family", std.getFamily());
         return "loginstd";
+    }
+
+    @RequestMapping(value = "/loginprof", method = {RequestMethod.POST, RequestMethod.GET})
+    public String loginprof(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=1) {
+            return "redirect:/login/logout";
+        }
+        Professor prof = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        model.addAttribute("name", prof.getName());
+        model.addAttribute("family", prof.getFamily());
+        return "loginprof";
+    }
+
+    @RequestMapping(value = "/loginmng", method = {RequestMethod.POST, RequestMethod.GET})
+    public String loginmng(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
+        Professor prof = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        model.addAttribute("name", prof.getName());
+        model.addAttribute("family", prof.getFamily());
+        return "loginmng";
     }
 }

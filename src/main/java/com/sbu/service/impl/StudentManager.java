@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sbu.dao.impl.StudentDao;
 import com.sbu.entity.Student;
 
-@Service
-public class StudentManager /*implements UserManager*/ {
+@Service("studentManager")
+public class StudentManager {
 
     public StudentManager() {
     }
