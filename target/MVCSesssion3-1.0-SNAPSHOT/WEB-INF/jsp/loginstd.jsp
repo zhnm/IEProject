@@ -17,6 +17,8 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
         <title>صفحه شخصی </title>
     </head>

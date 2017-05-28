@@ -6,6 +6,8 @@
 package com.sbu.service.impl;
 
 import com.sbu.dao.impl.ProfessorDao;
+import com.sbu.entity.Concentration;
+import com.sbu.entity.Course;
 import com.sbu.entity.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,4 +38,18 @@ public class ProfessorManager {
         Professor prof = findByID(id);
         return prof != null && Integer.parseInt(prof.getPpassword()) == pass;
     }
+    @Transactional
+    public Concentration getConcentration(Integer id)
+    {
+        Professor prof = findByID(id);
+        return prof.getConceid();
+    }
+    
+    public boolean checkAuthorization(Integer profID,Course course)
+    {
+        Professor prof = findByID(profID);
+        return course.getConceid().getId() == prof.getConceid().getId();
+    }
+    
+    
 }

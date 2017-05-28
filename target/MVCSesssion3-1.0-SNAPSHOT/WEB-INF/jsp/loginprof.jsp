@@ -17,6 +17,8 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
         <title>صفحه شخصی </title>
     </head>
@@ -45,10 +47,9 @@
             <div class="row">
                 <div class="col-md-3 rightmenu">
                     <ul>
-                    <li><a href="">اطلاعات جامع دانشجو</a></li>
                     <li><a href="">مشاهده دروس ارائه شده</a></li>
-                    <li><a href="">وضعیت درسی ترم جاری</a></li>
-                    <li><a href="">مشاهده اطلاعات شخصی</a></li>
+                    <li><a href="">مشاهده دروس ارائه شده ترم جاری</a></li>
+                    <li><a href="">ثبت نمره در دروس ترم جاری</a></li>
                     <li><a href="/MVCSesssion3/login/editinfo">ویرایش اطلاعات شخصی</a></li>
                     <li><a href="/MVCSesssion3/login/logout">خروج</a></li>
                     </ul>

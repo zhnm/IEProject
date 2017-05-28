@@ -18,9 +18,11 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
 
-        <title>تعریف درس</title>
+        <title>تغییر درس</title>
     </head>
     
     <body>
@@ -28,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="../image/logo.jpg" />
+                    <img src="http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
                 </div>
 
                 <div class="col-md-8">
@@ -45,36 +47,41 @@
     
     <div class="studentlist course">        
         <div class="container">
-        <h2 class="title">تعریف درس</h2>
-            <form class="form-inline" method="post" action="#">
+        <h2 class="title">تغییر درس</h2>
+            <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse/save" context="/MVCSesssion3"/>">
 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="name" id="name"  placeholder=""/></div>
+                        <div class="col-md-10"><input type="text" class="form-control" value="${sessionScope.cname}" name="name" id="name"  placeholder=""/></div>
                 </div>       
                 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">تعداد واحد:</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="name" id="name"  placeholder=""/></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="unit" id="name"  value="${sessionScope.unit}" placeholder=""/></div>
                 </div>
 				
                 <div class="row">
                         <div class="col-md-2"><label for="phone" class="control-label">نوع درس :</label></div>
                          <div class="col-md-10">
-                             <select class="bootstrap-select">
-                                <option value="1" selected="selected">تئوری</option>
-                                <option value="2"> عملی</option>
-                                <option value="2"> تئوری/عملی</option>
+                             <select class="bootstrap-select" name="type">
+                                <option value="theoritical" selected="selected">تئوری</option>
+                                <option value="practical"> عملی</option>
+                                <option value="theoritical/practical"> تئوری/عملی</option>
                             </select>
                            </div>
                 </div>
 
                 <div class="row">
                         <div class="col-md-2"><label for="name" class="control-label">گروه درس :</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="username" id="username"  placeholder=""/></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="major" id="username"  value="${sessionScope.major}" value="${sessionScope.major}" placeholder=""/></div>
                 </div>
                 
+                <div class="row">
+                        <div class="col-md-2"><label for="name" class="control-label">گرایش درس :</label></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="concentration" id="username"  value="${sessionScope.concentration}" placeholder=""/></div>
+                </div>
                 
+             <h1>${massage}</h1>   
              <button type="submit" class="btn btn-primary">ثبت درس</button>
         </form>    
         </div>

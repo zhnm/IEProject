@@ -8,21 +8,14 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        
-<!--        <link rel="icon" type="image/png" href="./resources/image/favicon.ico">
-        <link rel="stylesheet" href="./resources/fonts/font-awesome/css/font-awesome.min.css">
-        <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-        <link href="./resources/css/bootstrapRTL.min.css" rel="stylesheet">
-        <link rel='stylesheet' href="./resources/css/style.css" type='text/css' />
-        <script type="text/javascript" src="./resources/js/jquery-3.2.0.min.js"></script>
-        <script  type="text/javascript"  src="./resources/js/script.js"></script>-->
-
         <link rel="icon" type="image/png" href="<c:url value = "/resources/image/favicon.ico"/>">
         <link rel="stylesheet" href="<c:url value = "/resources/fonts/font-awesome/css/font-awesome.min.css"/>">
         <link href="<c:url value = "/resources/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
         <title>به سیستم مدیریت آموزش خوش آمدید</title>
     </head>

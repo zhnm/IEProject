@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Course.findById", query = "SELECT c FROM Course c WHERE c.id = :id"),
     @NamedQuery(name = "Course.findByUnit", query = "SELECT c FROM Course c WHERE c.unit = :unit"),
     @NamedQuery(name = "Course.findByCtype", query = "SELECT c FROM Course c WHERE c.ctype = :ctype"),
-    @NamedQuery(name = "Course.findByName", query = "SELECT c FROM Course c WHERE c.name = :name")})
+    @NamedQuery(name = "Course.findByName", query = "SELECT c FROM Course c WHERE c.name = :name"),
+  @NamedQuery(name = "Course.findByConcentration", query = "SELECT c FROM Course c WHERE c.conceid = :conceid"),
+})
 public class Course implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -62,6 +64,9 @@ public class Course implements Serializable {
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseid")
     private Collection<ProfCourseSem> profCourseSemCollection;
+    @JoinColumn(name = "CONCEID", referencedColumnName = "ID")
+    @ManyToOne
+    private Concentration conceid;
     @JoinColumn(name = "MAJORID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Major majorid;
@@ -119,6 +124,14 @@ public class Course implements Serializable {
 
     public void setProfCourseSemCollection(Collection<ProfCourseSem> profCourseSemCollection) {
         this.profCourseSemCollection = profCourseSemCollection;
+    }
+
+    public Concentration getConceid() {
+        return conceid;
+    }
+
+    public void setConceid(Concentration conceid) {
+        this.conceid = conceid;
     }
 
     public Major getMajorid() {

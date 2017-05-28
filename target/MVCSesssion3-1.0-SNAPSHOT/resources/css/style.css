@@ -550,6 +550,10 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 .welcomemsg p{
     font-size: 1.5em;
 }
+
+.studentlist button{
+    margin: 0;
+}
 /***** Media queries *****/
 
 @media (min-width: 992px) and (max-width: 1199px) {}
