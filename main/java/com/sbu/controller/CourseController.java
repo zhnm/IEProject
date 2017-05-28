@@ -37,6 +37,9 @@ public class CourseController {
 
     @RequestMapping(value = "/newcourse", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
         session = request.getSession(false);
         if (session.getAttribute("username") == null) {
             return "welcome";
@@ -46,6 +49,9 @@ public class CourseController {
 
     @RequestMapping(value = "/savecourse", method = {RequestMethod.POST, RequestMethod.GET})
     public String newCourse(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
         session = request.getSession(false);
         if (session.getAttribute("username") == null) {
             return "welcome";
@@ -103,30 +109,41 @@ public class CourseController {
 
     @RequestMapping(value = "/changables", method = {RequestMethod.GET})
     public String viewChangableCourses(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
         session = request.getSession(false);
         Concentration conce = professorManager.getConcentration(Integer.parseInt((String) session.getAttribute("username")));
         HashMap<String, Integer> courses = coursetManager.getCoursesByConce(conce);
         model.addAttribute("courselist", courses);
+        
         return "editCourse";
     }
 
     @RequestMapping(value = "/editcourse", method = {RequestMethod.POST, RequestMethod.GET})
     public String editCourse(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
         session = request.getSession(false);
         model.addAttribute("title", "تغییر درس");
-        Course course = coursetManager.findByID(Integer.parseInt((String) session.getAttribute("changable")));
-        model.addAttribute("name", course.getName());
-        model.addAttribute("unit", course.getUnit());
-        model.addAttribute("type", course.getCtype());
-        model.addAttribute("major", course.getConceid().getName());
+        Course course = coursetManager.findByID(Integer.parseInt((String) request.getParameter("changable")));
+        session.setAttribute("cname", course.getName());
+        session.setAttribute("unit", course.getUnit());
+        session.setAttribute("type", course.getCtype());
+        session.setAttribute("major", course.getMajorid().getName());
+        session.setAttribute("concentration", course.getConceid().getName());
         session.setAttribute("courseID", course.getId());//**************new********************
         return "changeCourse";
     }
 
     @RequestMapping(value = "/editcourse/save", method = {RequestMethod.POST, RequestMethod.GET})
     public String saveChanges(HttpSession session, HttpServletRequest request, Model model) {
-        Course c = coursetManager.findByID(Integer.parseInt((String) session.getAttribute("courseID")));
-
+        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+            return "redirect:/login/logout";
+        }
+        //Course c = coursetManager.findByID(Integer.parseInt((String) session.getAttribute("courseID")));
+        Course c = coursetManager.findByID((Integer)session.getAttribute("courseID"));
         if (request.getParameter("name").length() > 0) {
             c.setName(request.getParameter("name"));
         }

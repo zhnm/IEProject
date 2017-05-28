@@ -50,22 +50,26 @@
             <div class="container">
                 <h2 class="title">ویرایش درس</h2>
                 <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse" context="/MVCSesssion3"/>">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">انتخاب درس
-                            <span class="caret"></span></button>
-                            <%-- <select name="changables"> --%>
-                        <ul class="dropdown-menu" name="changable">
-                            <c:forEach items="${courselist}" var="changables">                               
-                                
-                                <li  value="${changables.value}">${changables.key}</li>
-                              
-                            </c:forEach>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!--<div class="dropdown">-->
+<!--                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">انتخاب درس
+                                    <span class="caret"></span></button>-->
+                                    <%-- <select name="changables"> --%>
+                                <select name="changable">
+                                    <c:forEach items="${courselist}" var="changables">                               
+                                        <option value="${changables.value}">${changables.key}</option>
+                                    </c:forEach>
+                                </select>
 
-                        </ul>
-
-                        <%--  </select> --%>
+                                <%--  </select> --%>
+<!--                            </div>-->
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary">انتخاب درس</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">انتخاب درس</button>
+
                 </form>  
             </div>
 
