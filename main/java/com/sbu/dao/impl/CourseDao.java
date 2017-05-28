@@ -1,5 +1,6 @@
 package com.sbu.dao.impl;
 
+import com.sbu.entity.Concentration;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,14 +32,10 @@ public class CourseDao /*implements UserDAO*/ {
         entityManager.persist(course);
     }
 
-    //@Override
-   /* public List<Course> findAllStudents() {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Course> cq = builder.createQuery(Course.class);
-        Root<Course> root = cq.from(Course.class);
-        cq.select(root);
-        return entityManager.createQuery(cq).getResultList();
-    }*/
+    @Transactional
+    public List<Course> findByConcentration(Concentration conce) { 
+        return entityManager.createNamedQuery("Course.findByConcentration").setParameter("conceid", conce).getResultList();
+    }
     
    @Transactional
     public ArrayList<Course> findAll() {

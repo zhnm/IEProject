@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="../image/logo.jpg" />
+                    <img src="http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
                 </div>
 
                 <div class="col-md-8">
@@ -46,7 +46,7 @@
     <div class="studentlist course">        
         <div class="container">
         <h2 class="title">تعریف درس</h2>
-            <form class="form-inline" method="post" action="<c:url value = "/login/savecourse" context="/MVCSesssion3"/>">
+            <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/savecourse" context="/MVCSesssion3"/>">
 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>

@@ -54,6 +54,10 @@ public class Concentration implements Serializable {
     @JoinColumn(name = "MAJORID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Major majorid;
+    @OneToMany(mappedBy = "conceid")
+    private Collection<Professor> professorCollection;
+    @OneToMany(mappedBy = "conceid")
+    private Collection<Course> courseCollection;
 
     public Concentration() {
     }
@@ -98,6 +102,24 @@ public class Concentration implements Serializable {
 
     public void setMajorid(Major majorid) {
         this.majorid = majorid;
+    }
+
+    @XmlTransient
+    public Collection<Professor> getProfessorCollection() {
+        return professorCollection;
+    }
+
+    public void setProfessorCollection(Collection<Professor> professorCollection) {
+        this.professorCollection = professorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @Override

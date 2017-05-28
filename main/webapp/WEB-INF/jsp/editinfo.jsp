@@ -51,10 +51,6 @@
                     <li><a>معرفی سامانه</a></li>
                    
                 </ul>
-                    <form class="" method="post" action="<c:url value = "/welcome/logout" context="/MVCSesssion3"/>" >
-                        
-                        <button class="btn btn-primary">خروج</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -87,7 +83,7 @@
         </div>
     <!--phone-->  
         <div class="form-group row">
-            <label for="phone" class="control-label">تلفن همراه :</label>
+            <label for="phone" class="control-label"> شماره تماس:</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" name="telephone" id="name"  placeholder=""/>

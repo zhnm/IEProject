@@ -1,11 +1,14 @@
 //FINAL 
 package com.sbu.controller;
 
+import com.sbu.entity.Concentration;
 import com.sbu.entity.Course;
 import com.sbu.entity.Major;
 import com.sbu.service.impl.CourseManager;
 import com.sbu.service.impl.MajorManager;
+import com.sbu.service.impl.ProfessorManager;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -26,6 +29,8 @@ public class CourseController {
     public CourseManager coursetManager;
     @Autowired
     public MajorManager majorManager;
+    @Autowired
+    public ProfessorManager professorManager;
 
     @RequestMapping(value = "/newcourse", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
@@ -76,4 +81,13 @@ public class CourseController {
         return "createCourse";
     }
 
+    @RequestMapping(value = "/changables", method = {RequestMethod.GET})
+    public String viewChangableCourses(HttpSession session, HttpServletRequest request, Model model)
+    {
+        session = request.getSession(false);
+        Concentration conce = professorManager.getConcentration(Integer.parseInt((String) session.getAttribute("username")));
+        HashMap<String,Integer> courses = coursetManager.getCoursesByConce(conce);
+        model.addAttribute("courselist",courses);
+        return "editCourse";
+    }
 }

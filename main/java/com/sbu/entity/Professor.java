@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -70,6 +72,9 @@ public class Professor implements Serializable {
     private String ppassword;
     @Column(name = "ROLE")
     private Integer role;
+    @JoinColumn(name = "CONCEID", referencedColumnName = "ID")
+    @ManyToOne
+    private Concentration conceid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "profid")
     private Collection<ProfCourseSem> profCourseSemCollection;
 
@@ -141,6 +146,14 @@ public class Professor implements Serializable {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public Concentration getConceid() {
+        return conceid;
+    }
+
+    public void setConceid(Concentration conceid) {
+        this.conceid = conceid;
     }
 
     @XmlTransient
