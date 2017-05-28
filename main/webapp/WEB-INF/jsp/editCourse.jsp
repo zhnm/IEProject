@@ -19,6 +19,8 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
 
         <title>ویرایش درس</title>
@@ -47,22 +49,24 @@
         <div class="studentlist course">        
             <div class="container">
                 <h2 class="title">ویرایش درس</h2>
-                <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/savecourse" context="/MVCSesssion3"/>">
+                <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse" context="/MVCSesssion3"/>">
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">انتخاب درس
                             <span class="caret"></span></button>
-                       <%-- <select name="changables"> --%>
-                            
+                            <%-- <select name="changables"> --%>
+                        <ul class="dropdown-menu" name="changable">
                             <c:forEach items="${courselist}" var="changables">                               
-                                <%--    <options value="${changables.value}">
-                                    ${changables.key} here </options>   --%>
-                                ${changables.key} here
+                                
+                                <li  value="${changables.value}">${changables.key}</li>
+                              
                             </c:forEach>
-                                    
-                      <%--  </select> --%>
+
+                        </ul>
+
+                        <%--  </select> --%>
                     </div>
                     <button type="submit" class="btn btn-primary">انتخاب درس</button>
-                </form>    
+                </form>  
             </div>
 
 

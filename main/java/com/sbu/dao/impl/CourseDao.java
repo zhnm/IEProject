@@ -38,14 +38,10 @@ public class CourseDao /*implements UserDAO*/ {
     }
     
    @Transactional
-    public ArrayList<Course> findAll() {
-        return (ArrayList) entityManager.createNamedQuery("Course.findAll").getResultList();
+    public List<Course> findAll() {
+        return entityManager.createNamedQuery("Course.findAll").getResultList();
     }
     
-    @Transactional
-    public Course findByID(Integer id) {
-        return (Course) entityManager.createNamedQuery("Course.findById").setParameter("id", id).getSingleResult();
-    }
     
     
     @Transactional

@@ -1,15 +1,14 @@
 package com.sbu.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.sbu.dao.impl.CourseDao;
 import com.sbu.entity.Concentration;
 import com.sbu.entity.Course;
+import com.sbu.entity.Major;
 import java.util.HashMap;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CourseManager /*implements UserManager*/ {
@@ -28,7 +27,12 @@ public class CourseManager /*implements UserManager*/ {
 
     @Transactional
     public Course findByID(Integer id) { 
-        return courseDao.findByID(id);
+        List<Course> courses = courseDao.findAll();
+        for (Course c : courses) {
+            if(c.getId() == id)              
+                return c;
+        }
+        return null;
     }
     
     @Transactional
@@ -51,5 +55,11 @@ public class CourseManager /*implements UserManager*/ {
         }
         return names;
     }
-
+    
+    public boolean checkMajorConce(Course course)
+    {
+        Major major = course.getMajorid();
+        Concentration conce= course.getConceid();
+        return conce.getMajorid().getId() == major.getId();
+    }
 }

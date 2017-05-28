@@ -18,6 +18,8 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
 
         <title>تعریف درس</title>
@@ -46,7 +48,7 @@
     <div class="studentlist course">        
         <div class="container">
         <h2 class="title">${title}}</h2>
-            <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/savecourse" context="/MVCSesssion3"/>">
+            <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse/save" context="/MVCSesssion3"/>">
 
                 <div class="row">
                          <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>
