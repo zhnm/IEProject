@@ -35,6 +35,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ProfCourseSem.findAll", query = "SELECT p FROM ProfCourseSem p"),
     @NamedQuery(name = "ProfCourseSem.findById", query = "SELECT p FROM ProfCourseSem p WHERE p.id = :id"),
+    @NamedQuery(name = "ProfCourseSem.findBySemester", query = "SELECT p FROM ProfCourseSem p WHERE p.semid = :sid"),
+    //*************NEW*****VIEW STUDENT LIST***********
+    @NamedQuery(name = "ProfCourseSem.findByProfessor", query = "SELECT p FROM ProfCourseSem p WHERE p.profid = :pid "),
+    @NamedQuery(name = "ProfCourseSem.findByProfessorAndSemester", query = "SELECT p FROM ProfCourseSem p WHERE p.profid = :pid and p.semid=:sid"),
+    @NamedQuery(name = "ProfCourseSem.findByCourseAndSemester", query = "SELECT p FROM ProfCourseSem p WHERE p.courseid = :cid and p.semid= :sid"),
     @NamedQuery(name = "ProfCourseSem.findByPtime", query = "SELECT p FROM ProfCourseSem p WHERE p.ptime = :ptime")})
 public class ProfCourseSem implements Serializable {
     private static final long serialVersionUID = 1L;

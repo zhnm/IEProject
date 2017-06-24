@@ -24,81 +24,101 @@
 
         <title>تغییر درس</title>
     </head>
-    
+
     <body>
-    <div class="menu">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
-                </div>
-
-                <div class="col-md-8">
-
-                <ul>
-                    <li><a>سیستم مدیریت آموزش</a></li>
-                    <li><a>ورود به سامانه</a></li>
-                    <li><a>معرفی سامانه</a></li>
-                </ul>
+        <div class="menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="http://localhost:8084/MVCSesssion3/resources/image/logo.jpg" />
+                    </div>
+                    <div class="col-md-8">
+                        <ul>
+                            <li><a>سیستم مدیریت آموزش</a></li>
+                            <li><a>ورود به سامانه</a></li>
+                            <li><a>معرفی سامانه</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="studentlist course">        
-        <div class="container">
-        <h2 class="title">تغییر درس</h2>
-            <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse/save" context="/MVCSesssion3"/>">
 
-                <div class="row">
-                         <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>
+        <div class="studentlist course">        
+            <div class="container">
+                <h2 class="title">تغییر درس</h2>
+                <form charset=utf-8 class="form-inline" method="post" action="<c:url value = "/login/editcourse/save" context="/MVCSesssion3"/>">
+
+                    <div class="row">
+                        <div class="col-md-2"><label for="name" class="control-label">نام درس :</label></div>
                         <div class="col-md-10"><input type="text" class="form-control" value="${sessionScope.cname}" name="name" id="name"  placeholder=""/></div>
-                </div>       
-                
-                <div class="row">
-                         <div class="col-md-2"><label for="name" class="control-label">تعداد واحد:</label></div>
-                        <div class="col-md-10"><input type="text" class="form-control" name="unit" id="name"  value="${sessionScope.unit}" placeholder=""/></div>
-                </div>
-				
-                <div class="row">
-                        <div class="col-md-2"><label for="phone" class="control-label">نوع درس :</label></div>
-                         <div class="col-md-10">
-                             <select class="bootstrap-select" name="type">
-                                <option value="theoritical" selected="selected">تئوری</option>
-                                <option value="practical"> عملی</option>
-                                <option value="theoritical/practical"> تئوری/عملی</option>
-                            </select>
-                           </div>
-                </div>
+                    </div>       
 
-                <div class="row">
+                    <div class="row">
+                        <div class="col-md-2"><label for="name" class="control-label">تعداد واحد:</label></div>
+                        <div class="col-md-10"><input type="text" class="form-control" name="unit" id="name"  value="${sessionScope.unit}" placeholder=""/></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label for="phone" class="control-label">نوع درس :</label></div>
+                        <div class="col-md-10">
+                            <select class="bootstrap-select" name="type">
+                                <option value="theoritical" selected="selected">اختیاری</option>
+                                <option value="practical">اصلی</option>
+                                <option value="theoritical/practical">آزمایشگاه</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-2"><label for="name" class="control-label">گروه درس :</label></div>
                         <div class="col-md-10"><input type="text" class="form-control" name="major" id="username"  value="${sessionScope.major}" value="${sessionScope.major}" placeholder=""/></div>
-                </div>
-                
-                <div class="row">
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-2"><label for="name" class="control-label">گرایش درس :</label></div>
                         <div class="col-md-10"><input type="text" class="form-control" name="concentration" id="username"  value="${sessionScope.concentration}" placeholder=""/></div>
-                </div>
-                
-             <h1>${massage}</h1>   
-             <button type="submit" class="btn btn-primary">ثبت درس</button>
-        </form>    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><label for="name" class="control-label">گرایش های مجاز :</label></div>
+                        <c:forEach items="${sessionScope.allowed}" var="alo">                               
+                            <label><input name="allow" type="checkbox" checked value="<c:out value="${alo}" />" style="position: relative"><c:out value="${alo}" /></label>
+                        </c:forEach>
+                            
+                        <c:forEach items="${sessionScope.allowedun}" var="aloun">                               
+                            <label><input name="allow" type="checkbox" value="${aloun}" style="position: relative">${aloun}</label>
+                        </c:forEach>
+                            
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><label for="name" class="control-label">پیش نیاز درس :</label></div>
+                        <div class="col-md-10 checkbox">
+                            <c:forEach items="${sessionScope.precourses}" var="precou">                               
+                                <label><input name="preco" type="checkbox" value="${precou}" checked style="position: relative">${precou}</label>
+                                </c:forEach>
+                                <c:forEach items="${sessionScope.precouncheck}" var="unch">                               
+                                <label><input name="preco" type="checkbox" value="${unch}" style="position: relative">${unch}</label>
+                                </c:forEach>
+                        </div>
+                    </div>
+
+                    <h1>${massage}</h1>   
+                    <button type="submit" class="btn btn-primary">ثبت درس</button>
+                </form>    
+            </div>
+
+
+
         </div>
-        
-        
 
-    </div>
-
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="cr">
-                     کلیه حقوق مادی و معنوی برای سامانه مدیریت آموزشی محفوظ است
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="cr">
+                        کلیه حقوق مادی و معنوی برای سامانه مدیریت آموزشی محفوظ است
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </body>
 
 

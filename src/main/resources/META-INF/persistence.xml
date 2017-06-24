@@ -37,6 +37,7 @@
     <class>com.sbu.entity.Semester</class>
     <class>com.sbu.entity.Professor</class>
     <class>com.sbu.entity.Student</class>
+    <class>com.sbu.entity.Copreco</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/university"/>

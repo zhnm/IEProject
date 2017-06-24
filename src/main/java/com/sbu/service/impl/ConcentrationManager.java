@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sbu.dao.impl.ConcentrationDao;
 import com.sbu.entity.Concentration;
+import com.sbu.entity.Major;
 
 @Service
 public class ConcentrationManager /*implements UserManager*/ {
@@ -27,6 +28,12 @@ public class ConcentrationManager /*implements UserManager*/ {
                 return c;                       
         }
         return null;
+    }
+    
+     //**********************NEW************************************
+    @Transactional
+    public List<Concentration> findByMajor(Major major) {
+        return concentrationDao.findByMajor(major);
     }
 
 }

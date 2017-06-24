@@ -27,8 +27,8 @@
      }); 
         
         $('.fa-plus').click(function(){
-           $('#time').append('<div class="col-md-10 col-md-offset-2" id="t'+(j)+'"></div>'); 
-           $('#t'+j).html("<select class='bootstrap-select'><option value='1' selected='selected'>شنبه</option><option value='2'> یکشنبه</option><option value='2'> دوشنبه</option><option value='2'> سه شنبه</option><option value='2'> چهارشنبه</option><option value='2'> پنج شنبه</option></select><input type='time' class='form-control' name='username' id='username' />");
+           $('#preco').append('<div class="col-md-10 col-md-offset-2" id="t'+(j)+'"></div>'); 
+           $('#t'+j).html('<input type="text" class="form-control" name="n'+(j)+'"/>');
             ++j;
             
         });

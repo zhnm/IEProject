@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Concentration.findAll", query = "SELECT c FROM Concentration c"),
     @NamedQuery(name = "Concentration.findById", query = "SELECT c FROM Concentration c WHERE c.id = :id"),
+    //**********************NEW************************************
+    @NamedQuery(name = "Concentration.findByMajor", query = "SELECT c FROM Concentration c WHERE c.majorid = :mid"),
     @NamedQuery(name = "Concentration.findByName", query = "SELECT c FROM Concentration c WHERE c.name = :name")})
 public class Concentration implements Serializable {
     private static final long serialVersionUID = 1L;

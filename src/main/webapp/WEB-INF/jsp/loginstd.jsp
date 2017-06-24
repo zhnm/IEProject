@@ -47,8 +47,8 @@
             <div class="row">
                 <div class="col-md-3 rightmenu">
                     <ul>
-                    <li><a href="">اطلاعات جامع دانشجو</a></li>
-                    <li><a href="">مشاهده دروس ارائه شده</a></li>
+                    <li><a href="/MVCSesssion3/login/general">اطلاعات جامع دانشجو</a></li>
+                    <li><a href="/MVCSesssion3/login/takecourse">اخذ درس</a></li>
                     <li><a href="">وضعیت درسی ترم جاری</a></li>
                     <li><a href="">مشاهده اطلاعات شخصی</a></li>
                     <li><a href="/MVCSesssion3/login/editinfo">ویرایش اطلاعات شخصی</a></li>

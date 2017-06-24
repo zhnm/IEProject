@@ -34,8 +34,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Semester.findAll", query = "SELECT s FROM Semester s"),
     @NamedQuery(name = "Semester.findById", query = "SELECT s FROM Semester s WHERE s.id = :id"),
+    //***********NEW********TAKECOURSE***********
+    @NamedQuery(name = "Semester.findAllOrdered", query = "SELECT s FROM Semester s ORDER BY s.name DESC"),
     @NamedQuery(name = "Semester.findByName", query = "SELECT s FROM Semester s WHERE s.name = :name")})
-public class Semester implements Serializable {
+public class Semester implements Serializable , Comparable<Semester>{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,5 +113,11 @@ public class Semester implements Serializable {
     public String toString() {
         return "com.sbu.entity.Semester[ id=" + id + " ]";
     }
+    
+    //*******************NEW*****************
+    @Override
+    public int compareTo(Semester semester) {
+        return this.name.compareTo(semester.name)*-1;//descendign
+}
     
 }

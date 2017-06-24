@@ -4,16 +4,20 @@ package com.sbu.controller;
 import com.sbu.entity.Concentration;
 import com.sbu.entity.Course;
 import com.sbu.entity.Major;
+import com.sbu.entity.ProfCourseSem;
+import com.sbu.entity.Professor;
+import com.sbu.entity.Semester;
 import com.sbu.service.impl.ConcentrationManager;
+import com.sbu.service.impl.CoprecoManager;
 import com.sbu.service.impl.CourseManager;
 import com.sbu.service.impl.MajorManager;
+import com.sbu.service.impl.ProfCourseSemManager;
 import com.sbu.service.impl.ProfessorManager;
-import java.io.UnsupportedEncodingException;
+import com.sbu.service.impl.SemesterManager;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,22 +38,35 @@ public class CourseController {
     public ConcentrationManager concentrationManager;
     @Autowired
     public ProfessorManager professorManager;
+    @Autowired
+    public CoprecoManager coprecoManager;
+    @Autowired
+    public SemesterManager semesterManager;
+    @Autowired
+    public ProfCourseSemManager profCourseSemManager;
 
     @RequestMapping(value = "/newcourse", method = {RequestMethod.GET})
     public String settings(HttpSession session, HttpServletRequest request, Model model) {
-        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
             return "redirect:/login/logout";
         }
         session = request.getSession(false);
         if (session.getAttribute("username") == null) {
             return "welcome";
         }
+        Professor professor = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        List<Concentration> allowedCon = professorManager.getAllowedConce(professor);
+        ArrayList<String> allowed = new ArrayList<String>();
+        for (int i = 0; i < allowedCon.size(); ++i) {
+            allowed.add(allowedCon.get(i).getName());
+        }
+        session.setAttribute("allowed", allowed);
         return "createCourse";
     }
 
     @RequestMapping(value = "/savecourse", method = {RequestMethod.POST, RequestMethod.GET})
     public String newCourse(HttpSession session, HttpServletRequest request, Model model) {
-        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
             return "redirect:/login/logout";
         }
         session = request.getSession(false);
@@ -86,6 +103,7 @@ public class CourseController {
                 model.addAttribute("massage", "گرایش درسی نامعتبر است");
                 return "createCourse";
             }
+            c.setAllowedConce(conce.getName());
             c.setConceid(conce);
             inputs++;
         }
@@ -100,29 +118,93 @@ public class CourseController {
                 model.addAttribute("massage", "اجازه تعریف درس در گرایش مورد نظر را ندارید");
                 return "createCourse";
             }
-            coursetManager.insertCourse(c);
+
+            String cname = "n";
+            int i = 0;
+            ArrayList<String> precos = new ArrayList();
+            String preCourseName = request.getParameter(cname + String.valueOf(i));
+            while (preCourseName != null && preCourseName.length() > 0) {
+                precos.add(preCourseName);
+                i++;
+                preCourseName = request.getParameter(cname + String.valueOf(i));
+            }
+            //allowedConc
+            String[] allowedStr = request.getParameterValues("allowedConc");
+            //***********************ASAAAAAAAALLLL************************************
+            if (allowedStr == null) {
+                model.addAttribute("massage", "حداقل یک گروه درسی مجاز انتخاب کنید");
+                return "createCourse";
+            }
+            String setAllowedCo = "";
+            for (int index = 0; index < allowedStr.length - 1; ++index) {
+                setAllowedCo += allowedStr[index] + "&";
+            }
+
+            setAllowedCo += allowedStr[allowedStr.length - 1];
+            c.setAllowedConce(setAllowedCo);
+            coursetManager.insertCourse(c, precos);
             model.addAttribute("massage", "تعریف درس با موفقیت انجام شد");
         }
 
         return "createCourse";
     }
 
+    @RequestMapping(value = "/newterm", method = {RequestMethod.POST, RequestMethod.GET})
+    public String newTerm(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
+            return "redirect:/login/logout";
+        }
+        session = request.getSession(false);
+        if (session.getAttribute("username") == null) {
+            return "welcome";
+        }
+        return "createTerm";
+    }
+
+    @RequestMapping(value = "/saveterm", method = {RequestMethod.POST, RequestMethod.GET})
+    public String saveterm(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
+            return "redirect:/login/logout";
+        }
+        session = request.getSession(false);
+        if (session.getAttribute("username") == null) {
+            return "welcome";
+        }
+        String year = request.getParameter("year");
+        String type = request.getParameter("type");
+        if (semesterManager.validateYear(year)) {
+            if(semesterManager.findByName(year + type)==null)//new
+            {
+                Semester semestre = new Semester();
+            semestre.setName(year + type);
+            semesterManager.save(semestre);
+            model.addAttribute("massage", "ترم با موفقیت ثبت شد");
+            }
+            else//new
+                model.addAttribute("massage", "ترم تحصیلی قبلا تعریف شده است");//new
+            
+        } else {
+            model.addAttribute("massage", "سال تحصیلی نامعتبر است");
+        }
+        return "createTerm";
+    }
+
     @RequestMapping(value = "/changables", method = {RequestMethod.GET})
     public String viewChangableCourses(HttpSession session, HttpServletRequest request, Model model) {
-        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
             return "redirect:/login/logout";
         }
         session = request.getSession(false);
         Concentration conce = professorManager.getConcentration(Integer.parseInt((String) session.getAttribute("username")));
         HashMap<String, Integer> courses = coursetManager.getCoursesByConce(conce);
         model.addAttribute("courselist", courses);
-        
+
         return "editCourse";
     }
 
     @RequestMapping(value = "/editcourse", method = {RequestMethod.POST, RequestMethod.GET})
     public String editCourse(HttpSession session, HttpServletRequest request, Model model) {
-        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
             return "redirect:/login/logout";
         }
         session = request.getSession(false);
@@ -133,17 +215,42 @@ public class CourseController {
         session.setAttribute("type", course.getCtype());
         session.setAttribute("major", course.getMajorid().getName());
         session.setAttribute("concentration", course.getConceid().getName());
-        session.setAttribute("courseID", course.getId());//**************new********************
+        session.setAttribute("courseID", course.getId());
+        ArrayList<String> precourses = coprecoManager.getAllPreCoNames(course);//******************NEW***************************
+        session.setAttribute("precourses", precourses);//******************NEW***************************
+        ArrayList<String> precouncheck = coursetManager.findByMajorID(course.getMajorid().getId());
+        precouncheck.remove(precouncheck.indexOf(course.getName()));
+        for (int i = 0; i < precouncheck.size(); ++i) {
+            if (precourses.contains(precouncheck.get(i))) {
+                precouncheck.remove(i);
+            }
+        }
+        session.setAttribute("precouncheck", precouncheck);
+        String[] allowed = course.getAllowedConce();
+        Professor professor = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        List<Concentration> cons = professorManager.getAllowedConce(professor);
+        List<String> consname = new ArrayList<>();
+
+        for (int j = 0; j < cons.size(); ++j) {
+            consname.add(cons.get(j).getName());
+        }
+        for (int z = 0; z < allowed.length; ++z) {
+            if (consname.contains(allowed[z])) {
+                consname.remove(allowed[z]);
+            }
+        }
+        session.setAttribute("allowed", allowed);
+        session.setAttribute("allowedun", consname);
         return "changeCourse";
     }
 
     @RequestMapping(value = "/editcourse/save", method = {RequestMethod.POST, RequestMethod.GET})
     public String saveChanges(HttpSession session, HttpServletRequest request, Model model) {
-        if (Integer.parseInt((String)session.getAttribute("role"))!=2) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
             return "redirect:/login/logout";
         }
         //Course c = coursetManager.findByID(Integer.parseInt((String) session.getAttribute("courseID")));
-        Course c = coursetManager.findByID((Integer)session.getAttribute("courseID"));
+        Course c = coursetManager.findByID((Integer) session.getAttribute("courseID"));
         if (request.getParameter("name").length() > 0) {
             c.setName(request.getParameter("name"));
         }
@@ -177,10 +284,86 @@ public class CourseController {
             model.addAttribute("massage", "اجازه ویرایش درس در گرایش مورد نظر را ندارید");
             return "createCourse";
         }
+        //pre course
+        String[] precourse = request.getParameterValues("preco");
+
+        ArrayList<String> precolist = new ArrayList<>();
+        Collections.addAll(precolist, precourse);
+
+        //*************ASAL***********
+        coprecoManager.updateDependencies(c, precolist);
+
+        //allowedCon
+        String[] allowedStr = request.getParameterValues("allow");
+        //***********************ASAAAAAAAALLLL************************************
+        if (allowedStr == null) {
+            model.addAttribute("massage", "حداقل یک گروه درسی مجاز انتخاب کنید");
+            return "changeCourse";
+        }
+        String setAllowedCo = "";
+        for (int index = 0; index < allowedStr.length - 1; ++index) {
+            setAllowedCo += allowedStr[index] + "&";
+        }
+
+        setAllowedCo += allowedStr[allowedStr.length - 1];
+        c.setAllowedConce(setAllowedCo);
+
         coursetManager.updateCourse(c);
         model.addAttribute("massage", "تغییرات با موفقیت اعمال شد");
 
         return "changeCourse";
+    }
+
+    @RequestMapping(value = "/editCurrentSemester", method = {RequestMethod.POST, RequestMethod.GET})
+    public String editCurrentSemester(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
+            return "redirect:/login/logout";
+        }
+        session = request.getSession(false);
+        if (session.getAttribute("username") == null) {
+            return "welcome";
+        }
+
+        //upper table contents
+        Professor prof = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        model.addAttribute("current", profCourseSemManager.currentSemester(prof.getConceid()));
+        HashMap<String, Integer> courses = coursetManager.getCoursesByConce(prof.getConceid());
+        model.addAttribute("courselist", courses);
+        HashMap<Integer, String> professors = professorManager.getProfessorsByConce(prof.getConceid());
+        model.addAttribute("proflist", professors);
+        return "offerCourse";
+    }
+
+    @RequestMapping(value = "/editCurrentSemester/save", method = {RequestMethod.POST, RequestMethod.GET})
+    public String saveCurrentSemesterChanges(HttpSession session, HttpServletRequest request, Model model) {
+        if (Integer.parseInt((String) session.getAttribute("role")) != 2) {
+            return "redirect:/login/logout";
+        }
+        session = request.getSession(false);
+        if (session.getAttribute("username") == null) {
+            return "welcome";
+        }
+        
+        ProfCourseSem pcs = new ProfCourseSem();
+        pcs.setCourseid(coursetManager.findByID(Integer.parseInt((String) request.getParameter("course"))));
+        pcs.setProfid(professorManager.findByID(Integer.parseInt((String) request.getParameter("prof"))));
+        pcs.setSemid(semesterManager.getCurrentSemester());
+        pcs.setPtime("-");
+        profCourseSemManager.save(pcs);
+        model.addAttribute("massage", "درس با موفقیت در ترم جاری ارائه شد");
+        
+        //upper table contents
+        Professor prof = professorManager.findByID(Integer.parseInt((String) session.getAttribute("username")));
+        model.addAttribute("current", profCourseSemManager.currentSemester(prof.getConceid()));
+       
+        HashMap<String, Integer> courses = coursetManager.getCoursesByConce(prof.getConceid());
+        model.addAttribute("courselist", courses);
+        HashMap<Integer, String> professors = professorManager.getProfessorsByConce(prof.getConceid());
+        model.addAttribute("proflist", professors);//changed
+
+        
+
+        return "offerCourse";
     }
 
 }

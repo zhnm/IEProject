@@ -47,12 +47,12 @@
             <div class="row">
                 <div class="col-md-3 rightmenu">
                     <ul>
-                        <li><a href="">تعریف ترم جدید</a></li>
+                        <li><a href="/MVCSesssion3/login/newterm">تعریف ترم</a></li>
                         <li><a href="/MVCSesssion3/login/newcourse">تعریف درس</a></li>
                         <li><a href="/MVCSesssion3/login/changables">ویرایش درس</a></li>
-                        <li><a href="">مشاهده دروس ارائه شده</a></li>
-                        <li><a href="">مشاهده دروس ارائه شده ترم جاری</a></li>
-                        <li><a href="">ثبت نمره در دروس ترم جاری</a></li>
+                        <li><a href="/MVCSesssion3/login/editCurrentSemester">ارائه درس برای ترم جاری</a></li>
+                        <li><a href="/MVCSesssion3/login/viewsemesters">مشاهده دروس ارائه شده</a></li>
+                        <li><a href="/MVCSesssion3/login/professorlist">مشاهده لیست دانشجویان اساتید</a></li>
                         <li><a href="/MVCSesssion3/login/editinfo">ویرایش اطلاعات شخصی</a></li>
                         <li><a href="/MVCSesssion3/login/logout">خروج</a></li>
                     </ul>

@@ -28,7 +28,7 @@ public class CourseDao /*implements UserDAO*/ {
 
     //@Override
     @Transactional
-    public void insertUser(Course course) {
+    public void insertCourse(Course course) {
         entityManager.persist(course);
     }
 
@@ -38,20 +38,31 @@ public class CourseDao /*implements UserDAO*/ {
     }
     
    @Transactional
-    public ArrayList<Course> findAll() {
-        return (ArrayList) entityManager.createNamedQuery("Course.findAll").getResultList();
+    public List<Course> findAll() {
+        return entityManager.createNamedQuery("Course.findAll").getResultList();
     }
     
+    //**************************EDITED******************************
     @Transactional
-    public Course findByID(Integer id) {
-        return (Course) entityManager.createNamedQuery("Course.findById").setParameter("id", id).getSingleResult();
+    public Course findByName(String name)
+    {
+        List<Course> courses = entityManager.createNamedQuery("Course.findByName").setParameter("name", name).getResultList();
+        if(!courses.isEmpty())
+            return courses.get(0);
+        return null;
     }
-    
     
     @Transactional
     public void updateCourse(Course course) {
         entityManager.merge(course);
     }
+    
+    @Transactional //***********NEW********TAKECOURSE***********
+    public List<Course> getByAllowedConce(String conce) {
+            return entityManager.createNamedQuery("Course.findByAllowedConcentration").setParameter("name", "%" + conce + "%").getResultList();
+    }
+   
+   
     
 
 }

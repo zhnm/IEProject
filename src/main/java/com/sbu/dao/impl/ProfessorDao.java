@@ -5,8 +5,10 @@
  */
 package com.sbu.dao.impl;
 
+import com.sbu.entity.Concentration;
 import com.sbu.entity.Professor;
 import com.sbu.entity.Student;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -33,5 +35,10 @@ public class ProfessorDao {
     @Transactional
     public void updateProfessor(Student studnet) {
         entityManager.merge(studnet);
+    }
+    
+    @Transactional
+    public List<Professor> findByConce(Concentration conce) {
+        return entityManager.createNamedQuery("Professor.findByConce").setParameter("conceid", conce).getResultList();
     }
 }

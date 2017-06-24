@@ -39,9 +39,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Course.findByUnit", query = "SELECT c FROM Course c WHERE c.unit = :unit"),
     @NamedQuery(name = "Course.findByCtype", query = "SELECT c FROM Course c WHERE c.ctype = :ctype"),
     @NamedQuery(name = "Course.findByName", query = "SELECT c FROM Course c WHERE c.name = :name"),
-  @NamedQuery(name = "Course.findByConcentration", query = "SELECT c FROM Course c WHERE c.conceid = :conceid"),
+    //***********NEW********TAKECOURSE***********
+    @NamedQuery(name = "Course.findByAllowedConcentration", query = "SELECT c FROM Course c WHERE c.allowedConce like :name"),
+    @NamedQuery(name = "Course.findByConcentration", query = "SELECT c FROM Course c WHERE c.conceid = :conceid"),
 })
 public class Course implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cid")
+    private Collection<Copreco> coprecoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "precid")
+    private Collection<Copreco> coprecoCollection1;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,6 +63,11 @@ public class Course implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "CTYPE")
     private String ctype;
+    @Basic(optional = false)
+    //@NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "ALLOWEDCONCE")
+    private String allowedConce;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -117,6 +128,14 @@ public class Course implements Serializable {
         this.name = name;
     }
 
+    public String[] getAllowedConce() {
+        return allowedConce.split("&");
+    }
+
+    public void setAllowedConce(String allowedConce) {
+        this.allowedConce = allowedConce;
+    }
+
     @XmlTransient
     public Collection<ProfCourseSem> getProfCourseSemCollection() {
         return profCourseSemCollection;
@@ -165,6 +184,24 @@ public class Course implements Serializable {
     @Override
     public String toString() {
         return "com.sbu.entity.Course[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Copreco> getCoprecoCollection() {
+        return coprecoCollection;
+    }
+
+    public void setCoprecoCollection(Collection<Copreco> coprecoCollection) {
+        this.coprecoCollection = coprecoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Copreco> getCoprecoCollection1() {
+        return coprecoCollection1;
+    }
+
+    public void setCoprecoCollection1(Collection<Copreco> coprecoCollection1) {
+        this.coprecoCollection1 = coprecoCollection1;
     }
     
 }

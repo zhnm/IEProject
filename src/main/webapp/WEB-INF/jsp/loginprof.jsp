@@ -47,9 +47,7 @@
             <div class="row">
                 <div class="col-md-3 rightmenu">
                     <ul>
-                    <li><a href="">مشاهده دروس ارائه شده</a></li>
-                    <li><a href="">مشاهده دروس ارائه شده ترم جاری</a></li>
-                    <li><a href="">ثبت نمره در دروس ترم جاری</a></li>
+                    <li><a href="/MVCSesssion3/login/viewsemesters">مشاهده دروس ارائه شده</a></li>
                     <li><a href="/MVCSesssion3/login/editinfo">ویرایش اطلاعات شخصی</a></li>
                     <li><a href="/MVCSesssion3/login/logout">خروج</a></li>
                     </ul>
