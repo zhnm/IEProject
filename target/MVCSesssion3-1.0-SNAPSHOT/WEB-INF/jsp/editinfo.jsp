@@ -29,6 +29,8 @@
         <link href="<c:url value = "/resources/css/bootstrapRTL.min.css"/>" rel="stylesheet">
         <link rel='stylesheet' href="<c:url value = "/resources/css/style.css"/>" type='text/css' />
         <script type="text/javascript" src="<c:url value = "/resources/js/jquery-3.2.0.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value = "/resources/js/bootstrap-select.min.js"/>"></script>
         <script  type="text/javascript"  src="<c:url value = "/resources/js/script.js"/>"></script>
         
         <title>ویرایش اطلاعات</title>
@@ -58,7 +60,6 @@
 <div class="edit">        
 <div class="container">
     <h2 class="titlenews">ویرایش اطلاعات</h2>
-    <h1 id="random">YOUR NAME IS : ${sessionScope.username}</h1>
     <h1>${massage}</h1>
     <form class="" method="post" action="<c:url value = "/login/save" context="/MVCSesssion3"/>" >
     <!--name-->
@@ -83,7 +84,7 @@
         </div>
     <!--phone-->  
         <div class="form-group row">
-            <label for="phone" class="control-label">تلفن همراه :</label>
+            <label for="phone" class="control-label"> شماره تماس:</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" name="telephone" id="name"  placeholder=""/>

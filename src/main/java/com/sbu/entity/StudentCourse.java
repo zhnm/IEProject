@@ -32,6 +32,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StudentCourse.findAll", query = "SELECT s FROM StudentCourse s"),
     @NamedQuery(name = "StudentCourse.findById", query = "SELECT s FROM StudentCourse s WHERE s.id = :id"),
     @NamedQuery(name = "StudentCourse.findByGrade", query = "SELECT s FROM StudentCourse s WHERE s.grade = :grade"),
+    @NamedQuery(name = "StudentCourse.findByStudent", query = "SELECT s FROM StudentCourse s WHERE s.stid = :sid"),
+    //******NEW***********
+    @NamedQuery(name = "StudentCourse.findByStudentAndPCS", query = "SELECT s FROM StudentCourse s WHERE s.stid = :sid and s.pcsid=:pcsid"),
+    @NamedQuery(name = "StudentCourse.findByPCS", query = "SELECT s FROM StudentCourse s WHERE s.pcsid=:pcsid"),
     @NamedQuery(name = "StudentCourse.findByConfirmed", query = "SELECT s FROM StudentCourse s WHERE s.confirmed = :confirmed")})
 public class StudentCourse implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,7 +45,7 @@ public class StudentCourse implements Serializable {
     @Column(name = "ID")
     private Integer id;
     @Column(name = "GRADE")
-    private Integer grade;
+    private Float grade;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CONFIRMED")
@@ -73,11 +77,11 @@ public class StudentCourse implements Serializable {
         this.id = id;
     }
 
-    public Integer getGrade() {
+    public Float getGrade() {
         return grade;
     }
 
-    public void setGrade(Integer grade) {
+    public void setGrade(Float grade) {
         this.grade = grade;
     }
 

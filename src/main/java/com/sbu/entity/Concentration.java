@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Concentration.findAll", query = "SELECT c FROM Concentration c"),
     @NamedQuery(name = "Concentration.findById", query = "SELECT c FROM Concentration c WHERE c.id = :id"),
+    //**********************NEW************************************
+    @NamedQuery(name = "Concentration.findByMajor", query = "SELECT c FROM Concentration c WHERE c.majorid = :mid"),
     @NamedQuery(name = "Concentration.findByName", query = "SELECT c FROM Concentration c WHERE c.name = :name")})
 public class Concentration implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,6 +56,10 @@ public class Concentration implements Serializable {
     @JoinColumn(name = "MAJORID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Major majorid;
+    @OneToMany(mappedBy = "conceid")
+    private Collection<Professor> professorCollection;
+    @OneToMany(mappedBy = "conceid")
+    private Collection<Course> courseCollection;
 
     public Concentration() {
     }
@@ -98,6 +104,24 @@ public class Concentration implements Serializable {
 
     public void setMajorid(Major majorid) {
         this.majorid = majorid;
+    }
+
+    @XmlTransient
+    public Collection<Professor> getProfessorCollection() {
+        return professorCollection;
+    }
+
+    public void setProfessorCollection(Collection<Professor> professorCollection) {
+        this.professorCollection = professorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Course> getCourseCollection() {
+        return courseCollection;
+    }
+
+    public void setCourseCollection(Collection<Course> courseCollection) {
+        this.courseCollection = courseCollection;
     }
 
     @Override

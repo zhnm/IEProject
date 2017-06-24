@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -39,6 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Professor.findByMobile", query = "SELECT p FROM Professor p WHERE p.mobile = :mobile"),
     @NamedQuery(name = "Professor.findByEmail", query = "SELECT p FROM Professor p WHERE p.email = :email"),
     @NamedQuery(name = "Professor.findByPpassword", query = "SELECT p FROM Professor p WHERE p.ppassword = :ppassword"),
+    //***********NEW***********************
+    @NamedQuery(name = "Professor.findByConce", query = "SELECT p FROM Professor p WHERE p.conceid = :conceid"),
     @NamedQuery(name = "Professor.findByRole", query = "SELECT p FROM Professor p WHERE p.role = :role")})
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -70,6 +74,9 @@ public class Professor implements Serializable {
     private String ppassword;
     @Column(name = "ROLE")
     private Integer role;
+    @JoinColumn(name = "CONCEID", referencedColumnName = "ID")
+    @ManyToOne
+    private Concentration conceid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "profid")
     private Collection<ProfCourseSem> profCourseSemCollection;
 
@@ -141,6 +148,14 @@ public class Professor implements Serializable {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public Concentration getConceid() {
+        return conceid;
+    }
+
+    public void setConceid(Concentration conceid) {
+        this.conceid = conceid;
     }
 
     @XmlTransient
